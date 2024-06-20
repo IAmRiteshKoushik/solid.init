@@ -18,29 +18,21 @@ export default function Home(){
     // console.log(products());
     
     return(
-        <>
+        <Show when={products()} fallback={<p>Loading...</p>}>
             <div class="grid grid-cols-4 gap-10 my-4">
-
-                {/*<Card title="ninja tee" />*/}
-                <Card title="ninja tote bag" rounded={true} flat={false}>
-                    <h2>Ninja Tee, White</h2>
-                    <button class="btn">view</button>
-                    <p>Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.</p>
-                    <p>Only $10</p>
-                </Card>
-                <Card title="ninja hoodie" rounded={false} flat={true}>
-                    <h2>NInja Tee, White</h2>
-                    <p>Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.</p>
-                    <button class="btn">view</button>
-                </Card>
-
-                {/* Products.loading is true when there is not product and then
-                it becomes false after the product has been loaded*/}
-                <p>{console.log(products(), products.loading)}</p>
+                <For each={products()}>
+                    {(product) => (
+                        <Card rounded={true} flat={true}>
+                            <img src={product.img} alt="product img" />
+                            <h2 class="my-3 font-bold">{product.title}</h2>
+                        </Card>
+                    )}
+                </For>
             </div>
-
-            <SignalTrial />
-            <EventHandler />
-        </>
+            {/* Basic signal and event-handler
+                <SignalTrial />
+                <EventHandler />
+            */}
+        </Show>
     );
 }
