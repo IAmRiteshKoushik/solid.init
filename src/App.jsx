@@ -1,6 +1,7 @@
 import banner from "./assets/banner.png";
 import Card from "./components/Card";
 import SignalTrial from "./components/SignalTrial";
+import EventHandler from "./components/EventHandler"
 
 function App() {
     return (
@@ -27,6 +28,7 @@ function App() {
             </div>
 
             <SignalTrial />
+            <EventHandler />
         </div>
     );
 }
