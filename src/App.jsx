@@ -1,5 +1,6 @@
 import banner from "./assets/banner.png";
 import Card from "./components/Card";
+import SignalTrial from "./components/SignalTrial";
 
 function App() {
     return (
@@ -24,6 +25,8 @@ function App() {
                     <button class="btn">view</button>
                 </Card>
             </div>
+
+            <SignalTrial />
         </div>
     );
 }
