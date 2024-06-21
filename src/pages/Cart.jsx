@@ -4,7 +4,11 @@ import { useCartContext } from "../context/CartContext";
 export default function Cart() {
     const { items } = useCartContext();
 
-    console.log(items);
+    const total = () => {
+        return items.reduce((acc, product) => {
+            return acc + product.quantity * product.price
+        }, 0);
+    }
 
     return(
         <div
@@ -16,6 +20,8 @@ export default function Cart() {
                         <p class="my-3">{item.title} - ${item.price} x {item.quantity}</p>
                     )}
                 </For>
+
+                <p class="mt-8 pt-4border-t-2 font-bold">Total Cart Price - ${total()}</p>
             </Card>
         </div>
     );

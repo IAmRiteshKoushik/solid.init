@@ -5,6 +5,7 @@ import { Router, Route } from "@solidjs/router";
 import Cart from "./pages/Cart"
 import Home from "./pages/Home"
 import Product from "./pages/Product"
+import { useCartContext } from "./context/CartContext";
 
 // Lazy loading (reduces initial load time when you have a big application)
 // Currently, does not work
@@ -17,6 +18,17 @@ function App(props) {
     const [darkTheme, setDarkTheme] = createSignal(false);
     function toggleTheme() {
         setDarkTheme(!darkTheme());
+    }
+
+    const { items } = useCartContext();
+    const quantity = () => {
+        // acc - accumulator, current - current.value
+        // the acc is like a sum variable which keep a hold of all the values 
+        // being received from various items inside the items array
+        return items.reduce((acc, current) => {
+            return acc + current.quantity
+        }, 0);
+        // Finally, the accumulator is returned by the reduce() function
     }
 
     return (
@@ -33,7 +45,7 @@ function App(props) {
                 >light_mode</span>
                 <h1>Ninja Merch</h1>
                 <a href="/">Home</a>
-                <a href="/cart">Cart</a>
+                <a href="/cart">Cart ({quantity})</a>
             </header>
             <img class="rounded-md" src={banner} alt="site banner"/>
             {props.children}

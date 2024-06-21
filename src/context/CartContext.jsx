@@ -6,9 +6,11 @@ export const CartContext = createContext();
 
 export function CartContextProvider(props){
     const [items, setItems] = createStore([
-        { title: "test product", quantity: 2, id: 100, price: 15},
-        { title: "test prod2", quantity: 4, id: 101, price: 25},
-        { title: "test prod3", quantity: 6, id: 102, price: 35},
+
+        // Dummy products used for testing the ContextAPI
+        // { title: "test product", quantity: 2, id: 100, price: 15},
+        // { title: "test prod2", quantity: 4, id: 101, price: 25},
+        // { title: "test prod3", quantity: 6, id: 102, price: 35},
     ]);
 
     // value takes only a single value hence in-order to return multiple 
